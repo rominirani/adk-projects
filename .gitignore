@@ -3,3 +3,4 @@
 /credentials.json
 /my-awesome-agent
 /token.json
+**/__pycache__/
