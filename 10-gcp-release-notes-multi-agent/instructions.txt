@@ -1,0 +1,69 @@
+Refer to the codelab https://codelabs.developers.google.com/travel-agent-mcp-toolbox-adk?hl=en#0 to setup the MCP toolbox
+
+Instructions in brief:
+
+mkdir mcp-toolbox
+cd mcp-toolbox
+
+# For the MAC. 
+export VERSION=0.5.0
+curl -O https://storage.googleapis.com/genai-toolbox/v$VERSION/darwin/arm64/toolbox
+chmod +x toolbox
+
+tools.yaml
+----------
+sources:
+ my-cloud-sql-source:
+   kind: cloud-sql-postgres
+   project: gcp-experiments-349209
+   region: us-central1
+   instance: hoteldb-instance
+   database: postgres
+   user: postgres
+   password: postgres
+ my-bq-source:
+   kind: bigquery
+   project: gcp-experiments-349209
+
+tools:
+ search-hotels-by-name:
+   kind: postgres-sql
+   source: my-cloud-sql-source
+   description: Search for hotels based on name.
+   parameters:
+     - name: name
+       type: string
+       description: The name of the hotel.
+   statement: SELECT * FROM hotels WHERE name ILIKE '%' || $1 || '%';
+ search-hotels-by-location:
+   kind: postgres-sql
+   source: my-cloud-sql-source
+   description: Search for hotels based on location.
+   parameters:
+     - name: location
+       type: string
+       description: The location of the hotel.
+   statement: SELECT * FROM hotels WHERE location ILIKE '%' || $1 || '%';
+ search_release_notes_bq:
+   kind: bigquery-sql
+   source: my-bq-source
+   statement: |
+     SELECT
+     release_note_type, product_name, product_version_name, description
+     FROM
+       `bigquery-public-data`.`google_cloud_release_notes`.`release_notes`
+     WHERE
+     DATE(published_at) = CURRENT_DATE()
+     ORDER BY release_note_type, product_name;
+   description: |
+    Use this tool to get information on Google Cloud Release Notes.
+
+toolsets:
+   my_first_toolset:
+     - search-hotels-by-name
+     - search-hotels-by-location
+   my_bq_toolset:
+     - search_release_notes_bq
+
+./toolbox --port 7000 --tools-file "tools.yaml"
+
