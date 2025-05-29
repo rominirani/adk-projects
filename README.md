@@ -1,2 +1,15 @@
 # Agent Development Kit (ADK) projects
 This repository showcases Agent Development Kit (ADK) projects, designed for demonstration and as practical examples.
+
+| Folder Name                          | Description (1 line)                        |
+|-------------------------------------- |---------------------------------------------|
+| 1-helpful-assistant                  | Example agent project for helpful assistant. This agent only uses the Gemini model to answer questions. No tools or specific instructions. |
+| 2-travel-planner-agent               | Agent for planning travel itineraries. This agent uses Gemini model and a specific system instruction to answer queries about travel only.       |
+| 3-news-agent                         | Agent for gathering news updates. This agent uses model (Gemini), a system instruction and a set of tools to retrive the RSS feed, each RSS item and summarize the items.           |
+| 4-renovation-agent                   | Agent to assist with renovation tasks. This is a kitchen remodelling/renovation agent that is provided a sample planner and asked to create one and store in Google Cloud Storage as a PDF document.      |
+| 5-google-search-tool-agent           | Agent utilizing Google Search tool. This agent uses the in-build Google Search tool to ground results to Google Search results based on the query provided.          |
+| 6-rag-engine-agent                   | Retrieval-Augmented Generation (RAG) agent. This agent demonstrates how you can ground the responses to a set of PDFs documents that have been created as a corpus in Google Cloud's RAG Engine managed service. The answers will be provided only from about 5 Agent whitepapers uploaded into the corpus.  |
+| 7-bigquery-mcp-toolbox-agent         | BigQuery MCP toolbox agent project. This demonstrates how an ADK Agent can use a MCP Tool to integrate with Google Cloud BigQuery. The MCP Toolbox for databases is an effective way to connect to Google Cloud data sources and get a MCP layer to that underlying data. It greatly simplifies/eliminates the amount of boilerplate code that you would need to otherwise write to connect to databases.          |
+| 8-google-tasks-agent                 | Agent to interact with Google Tasks. This Agent uses a Tool that connects to the Google Tasks API and allows you to perform maintenance operations with your tasks.        |
+| 9-news-distribution-multi-agent      | Multi-agent system for news distribution. This is a multi-agent scenario that uses one agent to retrieve the current news and then uses a Parallel Execution Workflow to execute several agents that translate the aggregated content into different languages.   |
+| 10-gcp-release-notes-multi-agent     | Multi-agent project for GCP release notes. This is a multi-agent scenario that uses one agent to retrieve the current Google Cloud Release notes available in BigQuery. It uses the MCP toolbox to access the BigQuery datasource as explained in Project #7. The release notes are then summarized/categories and another agent is used to translate the contents into another language too.   |
