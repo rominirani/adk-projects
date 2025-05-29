@@ -4,7 +4,7 @@ This repository showcases Agent Development Kit (ADK) projects, designed for dem
 | Folder Name                          | Description (1 line)                        |
 |-------------------------------------- |---------------------------------------------|
 | 1-helpful-assistant                  | Example agent project for helpful assistant. This agent only uses the Gemini model to answer questions. No tools or specific instructions. |
-| 2-travel-planner-agent               | Agent for planning travel itineraries. This agent uses Gemini model and a specific system instruction to answer queries about travel only.       |
+| 2-travel-planner-agent               | Agent for planning travel itineraries. This agent uses Gemini model and a specific system instruction to answer queries about travel only. |
 | 3-news-agent                         | Agent for gathering news updates. This agent uses model (Gemini), a system instruction and a set of tools to retrive the RSS feed, each RSS item and summarize the items.           |
 | 4-renovation-agent                   | Agent to assist with renovation tasks. This is a kitchen remodelling/renovation agent that is provided a sample planner and asked to create one and store in Google Cloud Storage as a PDF document.      |
 | 5-google-search-tool-agent           | Agent utilizing Google Search tool. This agent uses the in-build Google Search tool to ground results to Google Search results based on the query provided.          |
