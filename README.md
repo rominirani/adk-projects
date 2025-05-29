@@ -1,7 +1,7 @@
 # Agent Development Kit (ADK) projects
 This repository showcases Agent Development Kit (ADK) projects, designed for demonstration and as practical examples.
 
-| Folder Name                          | Description (1 line)                        |
+| Folder Name                          | Description                                 |
 |-------------------------------------- |---------------------------------------------|
 | 1-helpful-assistant                  | Example agent project for helpful assistant. This agent only uses the Gemini model to answer questions. No tools or specific instructions. |
 | 2-travel-planner-agent               | Agent for planning travel itineraries. This agent uses Gemini model and a specific system instruction to answer queries about travel only. |
