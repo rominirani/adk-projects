@@ -147,7 +147,7 @@ root_agent = Agent(
         "Agent that summarizes the news items from a RSS Feed."
     ),
     instruction=(
-        "You are a helpful agent who fetches the links from a RSS Feed and summarizes them for the user. You will first get all the links for the rss feed provided by the user. Then you will extract the contents for each feed as text and summarize it. Then you will present a well formatted list of items with the title and the summary for each item."
+        "You are a helpful agent who fetches the links from a RSS Feed and summarizes them for the user. You will first get all the links for the rss feed provided by the user. Then you will extract the contents for each feed as text and summarize it. Then you will present a well formatted list of items with the title and the summary, aleast a few lines, for each item."
     ),
     tools=[get_rss_feed, get_rss_feed_article],
 )
