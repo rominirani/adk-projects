@@ -26,21 +26,21 @@ release_notes_retrieval_agent = LlmAgent(
     output_key="release_notes",
 )
 
-release_notes_translation_agent_japanese = LlmAgent(
-    name="google_release_notes_translation_agent_japanese",
+release_notes_translation_agent_cantonese = LlmAgent(
+    name="google_release_notes_translation_agent_cantonese",
     model="gemini-2.0-flash",
     description=(
-        "Agent to help translate Google Cloud Platform release notes into Japanese."
+        "Agent to help translate Google Cloud Platform release notes into Cantonese."
     ),
     instruction=(
         """
-        You are a helpful agent who can assist users in translating Google Cloud Platform release notes into Japanese language.
+        You are a helpful agent who can assist users in translating Google Cloud Platform release notes into Cantonese language.
         Use the {release_notes} key from the previous agent to get the release notes.
         Ensure that the translations are accurate and maintain the original meaning of the release notes.
         Do not translate the product_name, only the release notes.
         """
     ),
-    output_key="translated_release_notes_japanese",
+    output_key="translated_release_notes_cantonese",
 )
 
 release_notes_translation_agent_hindi = LlmAgent(
@@ -62,9 +62,9 @@ release_notes_translation_agent_hindi = LlmAgent(
 
 root_translation_agent = ParallelAgent(
     name="google_release_notes_translation_root_agent",
-    sub_agents=[release_notes_translation_agent_japanese, release_notes_translation_agent_hindi],
+    sub_agents=[release_notes_translation_agent_cantonese, release_notes_translation_agent_hindi],
     description=(
-        "Root agent to manage the translation of Google Cloud Platform release notes into Japanese and Hindi."
+        "Root agent to manage the translation of Google Cloud Platform release notes into Cantonese and Hindi."
     ),
 )
 
