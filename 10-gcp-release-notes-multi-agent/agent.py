@@ -1,4 +1,4 @@
-from google.adk.agents import Agent, SequentialAgent, LlmAgent
+from google.adk.agents import Agent, SequentialAgent, LlmAgent, ParallelAgent
 from toolbox_core import ToolboxSyncClient
 
 # Load the toolbox client and the toolset for Google Cloud Platform release notes
@@ -26,26 +26,51 @@ release_notes_retrieval_agent = LlmAgent(
     output_key="release_notes",
 )
 
-release_notes_translation_agent_cantonese = LlmAgent(
-    name="google_release_notes_translation_agent",
+release_notes_translation_agent_japanese = LlmAgent(
+    name="google_release_notes_translation_agent_japanese",
     model="gemini-2.0-flash",
     description=(
-        "Agent to help translate Google Cloud Platform release notes for the specific date into Cantonese."
+        "Agent to help translate Google Cloud Platform release notes into Japanese."
     ),
     instruction=(
         """
-        You are a helpful agent who can assist users in translating Google Cloud Platform release notes for the specific date into Cantonese language.
+        You are a helpful agent who can assist users in translating Google Cloud Platform release notes into Japanese language.
         Use the {release_notes} key from the previous agent to get the release notes.
         Ensure that the translations are accurate and maintain the original meaning of the release notes.
         Do not translate the product_name, only the release notes.
         """
     ),
-    output_key="translated_release_notes_cantonese",
+    output_key="translated_release_notes_japanese",
+)
+
+release_notes_translation_agent_hindi = LlmAgent(
+    name="google_release_notes_translation_agent_hindi",
+    model="gemini-2.0-flash",
+    description=(
+        "Agent to help translate Google Cloud Platform release notes into Hindi."
+    ),
+    instruction=(
+        """
+        You are a helpful agent who can assist users in translating Google Cloud Platform release notes into Hindi language.
+        Use the {release_notes} key from the previous agent to get the release notes.
+        Ensure that the translations are accurate and maintain the original meaning of the release notes.
+        Do not translate the product_name, only the release notes.
+        """
+    ),
+    output_key="translated_release_notes_hindi",
+)
+
+root_translation_agent = ParallelAgent(
+    name="google_release_notes_translation_root_agent",
+    sub_agents=[release_notes_translation_agent_japanese, release_notes_translation_agent_hindi],
+    description=(
+        "Root agent to manage the translation of Google Cloud Platform release notes into Japanese and Hindi."
+    ),
 )
 
 root_agent = SequentialAgent(
     name="google_release_notes_root_agent",
-    sub_agents=[release_notes_retrieval_agent, release_notes_translation_agent_cantonese],
+    sub_agents=[release_notes_retrieval_agent, root_translation_agent],
     description=(
         "Root agent to manage the retrieval and translation of Google Cloud Platform release notes."
     ),
