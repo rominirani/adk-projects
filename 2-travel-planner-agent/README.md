@@ -37,17 +37,6 @@ An intelligent travel planning assistant built with Google's Agent Development K
      - Set `GOOGLE_GENAI_USE_VERTEXAI=FALSE`
      - Add your API key from Google AI Studio
 
-## Usage
-
-The travel planner agent can be used in your Python applications:
-
-```python
-from travel_planner_agent.agent import root_agent
-
-# Example usage
-response = root_agent.invoke("Can you help me plan a weekend trip to Paris?")
-```
-
 The agent can assist with:
 - Trip planning and itinerary creation
 - Travel recommendations

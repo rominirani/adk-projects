@@ -2,7 +2,6 @@
 import logging
 import os
 
-
 from google.adk.agents import Agent
 from google.cloud import storage
 from reportlab.lib.pagesizes import letter
