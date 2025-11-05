@@ -4,3 +4,4 @@
 /my-awesome-agent
 /token.json
 **/__pycache__/
+/**/.env
